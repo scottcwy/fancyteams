@@ -253,6 +253,10 @@
       "ai": "AI",
       "product": "产品",
       "paper": "论文"
+    },
+    "fancy-teams": {
+      "title": "Fancy Teams",
+      "desc": "精选的中文产品团队与公司导航"
     }
   },
   "footer": {

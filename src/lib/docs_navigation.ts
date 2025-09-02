@@ -204,6 +204,13 @@ export function useCollectionData() {
           background: "linear-gradient(113.96deg, #16859D 0.53%, #1E4849 25.76%, #2B6751 46.63%, #9BE056 86.5%, #F6FF8D 100%)",
           icon: LayoutGrid,
         },
+        {
+          id: "fancy-teams",
+          name: t("fancy-teams.title"),
+          desc: t("fancy-teams.desc"),
+          background: "linear-gradient(113.96deg, #16859D 0.53%, #1E4849 25.76%, #2B6751 46.63%, #9BE056 86.5%, #F6FF8D 100%)",
+          icon: LayoutGrid,
+        }
       ]
     },
   ] as const;

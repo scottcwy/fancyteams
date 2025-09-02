@@ -251,6 +251,10 @@
       "ai": "AI",
       "product": "Product",
       "paper": "Paper"
+    },
+    "fancy-teams": {
+      "title": "Fancy Teams",
+      "desc": "Curated directory of Chinese product teams and companies"
     }
   },
   "footer": {
