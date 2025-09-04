@@ -10,32 +10,19 @@ import { DiscordIcon, XhsIcon, XIcon } from "@/components/LogosBrand";
 import { CollectionGroupProps, CollectionItemProps, useCollectionData } from "@/lib/docs_navigation";
 import { Separator } from "@/components/ui/separator";
 import { CollectionGroup } from "@/components/collection/CollectionView";
-import { LayoutGrid } from "lucide-react";
 import TeamCard from "@/components/fancyteams/TeamCard";
 import fancyTeamsData from "@/app/[locale]/(docs)/fancy-teams/data";
-
 
 
 export function SectionCollections() {
   const t = useTranslations("index.collections");
   const tDocs = useTranslations("docs");
+  // 正确获取集合数据
+  const { collectionList } = useCollectionData();
+  // 过滤掉“杂项”分组
+  const filteredList = collectionList.filter((g) => g.title !== tDocs("group.miscellaneous"));
 
-  const collectionList: CollectionGroupProps[] = [
-    {
-      title: tDocs("group.miscellaneous"),
-      links: [
-        {
-          id: "fancy-teams",
-          name: tDocs("fancy-teams.title"),
-          desc: tDocs("fancy-teams.desc"),
-          background:
-            "linear-gradient(113.96deg, #16859D 0.53%, #1E4849 25.76%, #2B6751 46.63%, #9BE056 86.5%, #F6FF8D 100%)",
-          icon: LayoutGrid,
-        },
-      ],
-    },
-  ];
-
+  // Fancy Teams 数据（按中文名排序）
   const teams = [...fancyTeamsData].sort((a, b) => a.name.localeCompare(b.name, "zh-Hans-CN"));
 
   return (
@@ -47,7 +34,7 @@ export function SectionCollections() {
           <div className="h-9" />
 
           <div className="w-full flex flex-col items-center gap-9">
-            {collectionList.map((item, index) => (
+            {filteredList.map((item, index) => (
               <CollectionGroup key={index} {...item} />
             ))}
 

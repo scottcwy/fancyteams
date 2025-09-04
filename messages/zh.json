@@ -20,9 +20,10 @@
   },
   "index": {
     "hero": {
-      "title": "Latent Box",
-      "subtitle": "AI、创意和艺术领域的精选合集，来自 <LatentCat></LatentCat>。",
-      "introduction": "介绍"
+      "title": "Fancy Teams",
+      "subtitle": "发现、关注并加入中国最有趣的团队。",
+      "introduction": "浏览团队",
+      "submit_team": "提交团队"
     },
     "social": {
       "title": "关注我们",

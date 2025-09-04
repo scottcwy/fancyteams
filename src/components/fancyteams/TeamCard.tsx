@@ -3,7 +3,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Globe, MapPin, Users } from "lucide-react";
+import { Globe, MapPin, Users, Tag } from "lucide-react";
 import { ResourceItem } from "@/lib/data_types";
 import { cn } from "@/lib/utils";
 
@@ -24,19 +24,33 @@ function buildFavicons(url: string, size: number = 64): string[] {
   }
 }
 
-function parseMeta(desc?: string): { summary?: string; city?: string; size?: string } {
+function parseMeta(
+  desc?: string
+): {
+  summary?: string;
+  city?: string;
+  size?: string;
+  track?: string;
+} {
   if (!desc) return {};
   const cityMatch = desc.match(/城市:\s*([^·]+)/);
   const sizeMatch = desc.match(/规模:\s*([^·]+)/);
+  const trackMatch = desc.match(/赛道:\s*([^·]+)/);
   let summary: string | undefined = desc
     .replace(/\s*·\s*城市:\s*[^·]+/g, "")
     .replace(/\s*·\s*规模:\s*[^·]+/g, "")
+    .replace(/\s*·\s*赛道:\s*[^·]+/g, "")
     .trim();
   if (!summary || summary === desc) {
-    const onlyMeta = /^(城市:|规模:)/.test(desc);
+    const onlyMeta = /^(城市:|规模:|赛道:)/.test(desc);
     summary = onlyMeta ? undefined : desc;
   }
-  return { summary, city: cityMatch?.[1]?.trim(), size: sizeMatch?.[1]?.trim() };
+  return {
+    summary,
+    city: cityMatch?.[1]?.trim(),
+    size: sizeMatch?.[1]?.trim(),
+    track: trackMatch?.[1]?.trim(),
+  };
 }
 
 export interface TeamCardProps {
@@ -45,7 +59,7 @@ export interface TeamCardProps {
 }
 
 export function TeamCard({ item, className }: TeamCardProps) {
-  const { summary, city, size } = parseMeta(item.desc);
+  const { summary, city, size, track } = parseMeta(item.desc);
   const sources = React.useMemo(() => buildFavicons(item.url, 64), [item.url]);
   const [favicon, setFavicon] = React.useState<string>(sources[0]);
 
@@ -81,16 +95,32 @@ export function TeamCard({ item, className }: TeamCardProps) {
             />
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-base font-semibold leading-6 truncate" title={item.name}>{item.name}</div>
+            <div className="text-base font-semibold leading-6 truncate" title={item.name}>
+              {item.name}
+            </div>
             <div className="mt-2 flex flex-wrap gap-2 text-xs text-muted-foreground">
               {city && (
                 <Badge variant="secondary" className="px-2 py-0.5 rounded-md">
-                  <span className="inline-flex items-center gap-1"><MapPin className="w-3.5 h-3.5" aria-hidden />{city}</span>
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5" aria-hidden />
+                    {city}
+                  </span>
+                </Badge>
+              )}
+              {track && (
+                <Badge variant="secondary" className="px-2 py-0.5 rounded-md">
+                  <span className="inline-flex items-center gap-1">
+                    <Tag className="w-3.5 h-3.5" aria-hidden />
+                    {track}
+                  </span>
                 </Badge>
               )}
               {size && (
                 <Badge variant="secondary" className="px-2 py-0.5 rounded-md">
-                  <span className="inline-flex items-center gap-1"><Users className="w-3.5 h-3.5" aria-hidden />{size}</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Users className="w-3.5 h-3.5" aria-hidden />
+                    {size}
+                  </span>
                 </Badge>
               )}
             </div>

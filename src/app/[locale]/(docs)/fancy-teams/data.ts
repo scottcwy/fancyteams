@@ -42,11 +42,14 @@ function buildResourceItem(raw: FancyTeamRawItem, index: number): ResourceItem |
 
   if (!name || !url) return null;
 
-  // 业务元数据（例如：城市 / 公司规模）合并到描述中
+  // 仅将 城市 / 公司规模 合并到描述中（本次新增：赛道）
   const city = (raw["城市"] ?? raw.city ?? "").toString().trim();
   const size = (raw["公司规模"] ?? raw["规模"] ?? raw.size ?? "").toString().trim();
+  const track = (raw["赛道"] ?? raw.track ?? "").toString().trim();
+
   const metaParts: string[] = [];
   if (city) metaParts.push(`城市: ${city}`);
+  if (track) metaParts.push(`赛道: ${track}`);
   if (size) metaParts.push(`规模: ${size}`);
   const meta = metaParts.join(" · ");
   const finalDesc = [baseDesc?.trim(), meta].filter(Boolean).join(" · ");

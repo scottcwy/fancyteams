@@ -1,7 +1,6 @@
 import { LatentBoxLogo } from "@/components/Logos";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/navigation";
-import { GitHubButton } from "@/components/GitHubButton";
 import { HeaderPadding } from "@/components/Header";
 import { ContainerFull } from "@/components/Containers";
 import { useTranslations } from "next-intl";
@@ -42,13 +41,15 @@ export function SectionHero() {
           <div className="h-6" />
 
           <div className="flex gap-4">
-            <Link href="/docs">
+            <Link href="#teams">
               <Button>
                 {t("introduction")}
               </Button>
             </Link>
-            <Link href="https://github.com/latentcat/latentbox" target="_blank">
-              <GitHubButton />
+            <Link href="https://github.com/latentcat/latentbox/issues/new" target="_blank">
+              <Button>
+                {t("submit_team")}
+              </Button>
             </Link>
           </div>
 

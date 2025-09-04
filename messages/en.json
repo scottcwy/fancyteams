@@ -20,9 +20,10 @@
   },
   "index": {
     "hero": {
-      "title": "Latent Box",
-      "subtitle": "A collection of awesome-lists for AI, creativity and art by <LatentCat></LatentCat>.",
-      "introduction": "Introduction"
+      "title": "China Fancy Teams Directory",
+      "subtitle": "Discover, follow and reach out to the most interesting Chinese fancy teams.",
+      "introduction": "Browse Teams",
+      "submit_team": "Submit Team"
     },
     "social": {
       "title": "Follow Us",
