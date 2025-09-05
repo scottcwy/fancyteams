@@ -1,4 +1,4 @@
-import { LatentBoxLogo } from "@/components/Logos";
+import { FirenzeLogo } from "@/components/Logos";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/navigation";
 import { HeaderPadding } from "@/components/Header";
@@ -14,7 +14,7 @@ export function SectionHero() {
       <ContainerFull>
         <div className="flex flex-col items-center ">
           <HeaderPadding />
-          <LatentBoxLogo ext="hero" className="h-32" />
+          <FirenzeLogo className="h-32" />
 
           <div className="h-6" />
 

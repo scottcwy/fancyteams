@@ -85,13 +85,11 @@
     },
     "contributing": {
       "title": "贡献",
-      "desc": "如何为 Latent Box 做出贡献",
-      "original": "原版"
+      "desc": "如何为 Latent Box 做出贡献"
     },
     "collections": {
       "title": "浏览合集",
-      "desc": "探索我们精心策划的内容合集",
-      "original": "原版"
+      "desc": "探索我们精心策划的内容合集"
     },
     "sd-ecology": {
       "title": "Stable Diffusion 生态论文精选",
@@ -272,7 +270,7 @@
     "home": "返回首页"
   },
   "LocaleSwitcher": {
-    "label": "Label",
+    "label": "切换语言",
     "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
   },
   "ModeToggle": {

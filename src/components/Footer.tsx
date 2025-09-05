@@ -25,16 +25,15 @@ export function Footer() {
         </NextIntlClientProvider>
       </div>
       <p className="text-sm text-muted-foreground">
-        &copy; {new Date().getFullYear()}{" "}
+        Built by{" "}
         <TrackLink
-          trackValue={["latent_cat", "footer"]}
-          href="https://latentcat.com"
+          trackValue={["firenze", "footer"]}
+          href="https://firenze2024.com"
           target="_blank"
           className="border-b"
         >
-          Latent Cat
+          燕耳Firenze
         </TrackLink>
-        . {t("reserve_rights")}
       </p>
       <p className="safe-pb" />
     </div>

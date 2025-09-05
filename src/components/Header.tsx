@@ -1,20 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { clsx } from "clsx";
-import React, { Fragment, useEffect, useState } from "react";
-import {
-  ChevronDownIcon,
-  Cross1Icon,
-  ArrowTopRightIcon,
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import React, { useEffect } from "react";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
-import { LatentBoxLogo } from "@/components/Logos";
-import { Container, ContainerFull } from "@/components/Containers";
+import { transitionLg } from "@/lib/animations";
+import { FirenzeLogo } from "@/components/Logos";
+import { ContainerFull } from "@/components/Containers";
 
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
@@ -34,13 +28,10 @@ interface HeaderLinkProps {
 }
 
 interface HeaderProps {
-  links: {
-    name: string;
-    href: string;
-  }[];
+  links: HeaderLinkProps[];
 }
 
-function Logo(props: { ext: string }) {
+function Logo() {
   const setMenuOpen = useSetAtom(menuOpenAtom);
   return (
     <div className="overflow-hidden">
@@ -51,7 +42,7 @@ function Logo(props: { ext: string }) {
           className="px-2 -mx-2 flex h-14 items-center"
           onClick={() => setMenuOpen(false)}
         >
-          <LatentBoxLogo className="h-9" ext={props.ext} />
+          <FirenzeLogo className="h-9" />
         </TrackLink>
       </div>
     </div>
@@ -90,12 +81,11 @@ function MobileNavItem(props: HeaderLinkProps) {
   );
 }
 
-const headerBgClass = "bg-background/50 backdrop-blur-xl backdrop-saturate-150"
+const headerBgClass = "bg-background/50 backdrop-blur-xl backdrop-saturate-150";
 
 function MobileNavigation(
-  props: HeaderProps & { navigation: NavGroup[] } & React.ComponentPropsWithoutRef<"div">,
+  props: HeaderProps & { navigation: NavGroup[] } & React.ComponentPropsWithoutRef<"div">
 ) {
-
   const [menuOpen, setMenuOpen] = useAtom(menuOpenAtom);
   const isTop = useAtomValue(scrollTopAtom);
 
@@ -105,10 +95,10 @@ function MobileNavigation(
         className={clsx(
           "fixed top-0 z-20 w-full h-14 flex md:hidden items-center justify-between px-6 _lg:px-12 break-words transition",
           props.className,
-          isTop ? "" : headerBgClass,
+          isTop ? "" : headerBgClass
         )}
       >
-        <Logo ext="mobile" />
+        <Logo />
         <div className="flex items-center">
           <Button
             variant="ghost"
@@ -124,15 +114,13 @@ function MobileNavigation(
               <XMarkIcon className="h-6 w-6 text-foreground" />
             )}
           </Button>
-          {/*<div className="w-3"></div>*/}
         </div>
         <BorderBottom />
       </div>
       <div className="lg:hidden">
         <motion.div
           className={clsx(
-            "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden",
-            // menuOpen ? "block" : "hidden",
+            "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden"
           )}
           initial={{
             height: 56,
@@ -150,7 +138,6 @@ function MobileNavigation(
               className="grow relative"
               animate={{
                 y: menuOpen ? 0 : -20,
-                // opacity: menuOpen ? 1 : 0,
               }}
               transition={transitionLg}
             >
@@ -167,7 +154,10 @@ function MobileNavigation(
                   </ul>
                 </nav>
                 <div className="h-6" />
-                <DocsSidebarNav items={props.navigation} onClick={() => setMenuOpen(false)}/>
+                <DocsSidebarNav
+                  items={props.navigation}
+                  onClick={() => setMenuOpen(false)}
+                />
               </div>
             </motion.div>
           </div>
@@ -190,7 +180,7 @@ function NavItem(props: HeaderLinkProps) {
           "relative flex items-center px-3 py-2 transition",
           isActive
             ? "text-foreground font-semibold"
-            : "text-zinc-600 dark:text-zinc-400",
+            : "text-zinc-600 dark:text-zinc-400"
         )}
       >
         {props.name}
@@ -201,7 +191,7 @@ function NavItem(props: HeaderLinkProps) {
 }
 
 function DesktopNavigation(
-  props: HeaderProps & React.ComponentPropsWithoutRef<"nav">,
+  props: HeaderProps & React.ComponentPropsWithoutRef<"nav">
 ) {
   const isTop = useAtomValue(scrollTopAtom);
   return (
@@ -209,12 +199,12 @@ function DesktopNavigation(
       className={clsx(
         "fixed top-0 z-20 w-full hidden md:flex break-words transition",
         props.className,
-        isTop ? "" : headerBgClass,
+        isTop ? "" : headerBgClass
       )}
     >
       <ContainerFull>
         <div className="h-14 flex items-center justify-between">
-          <Logo ext="desktop" />
+          <Logo />
           <div className="flex items-center">
             <nav>
               <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
@@ -223,7 +213,6 @@ function DesktopNavigation(
                 ))}
               </ul>
             </nav>
-            {/*<div className="w-3"></div>*/}
           </div>
           <BorderBottom />
         </div>
@@ -232,28 +221,9 @@ function DesktopNavigation(
   );
 }
 
-export function Header(props: { navigation: NavGroup[] }) {
+export function Header() {
   const t = useTranslations("header");
-  const headerLinks = [
-    // {
-    //   name: "Docs",
-    //   href: "/docs",
-    // },
-    {
-      name: t("docs"),
-      href: "/docs",
-    },
-    {
-      name: "Discord",
-      href: "https://discord.gg/V9CNuqYfte",
-      target: "_blank",
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/latentcat/latentbox",
-      target: "_blank",
-    },
-  ];
+  const headerLinks: HeaderLinkProps[] = [];
 
   const setIsTop = useSetAtom(scrollTopAtom);
 
@@ -268,11 +238,13 @@ export function Header(props: { navigation: NavGroup[] }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [setIsTop]);
+
+  const navData = useNavData();
 
   return (
     <>
-      <MobileNavigation links={headerLinks} navigation={props.navigation} />
+      <MobileNavigation links={headerLinks} navigation={navData} />
       <DesktopNavigation links={headerLinks} />
     </>
   );
