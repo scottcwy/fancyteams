@@ -24,13 +24,13 @@ export function LatentBoxLogo(props: { ext: string } & React.ComponentPropsWitho
         </linearGradient>
         <linearGradient id={"paint1_linear_1_4" + props.ext} x1="177.979" y1="306.809" x2="0.978381" y2="613.382"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#808080" />
-          <stop offset="1" stopColor="#474747" />
+          <stop stopColor="hsl(var(--muted-foreground))" />
+          <stop offset="1" stopColor="hsl(var(--foreground))" />
         </linearGradient>
         <linearGradient id={"paint2_linear_1_4" + props.ext} x1="531.965" y1="306.809" x2="708.965" y2="613.382"
           gradientUnits="userSpaceOnUse">
-          <stop stopColor="#BCBCBC" />
-          <stop offset="1" stopColor="#565656" />
+          <stop stopColor="hsl(var(--muted-foreground))" />
+          <stop offset="1" stopColor="hsl(var(--foreground))" />
         </linearGradient>
         <linearGradient id={"paint3_linear_1_4" + props.ext} x1="443.479" y1="255.713" x2="354.978" y2="409"
           gradientUnits="userSpaceOnUse">

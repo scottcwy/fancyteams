@@ -46,7 +46,7 @@ export function SectionHero() {
                 {t("introduction")}
               </Button>
             </Link>
-            <Link href="https://github.com/latentcat/latentbox/issues/new" target="_blank">
+            <Link href="mailto:2794692336@qq.com">
               <Button>
                 {t("submit_team")}
               </Button>

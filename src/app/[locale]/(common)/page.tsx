@@ -17,7 +17,7 @@ export default function Page() {
 
       <Container>
         {/* 再向下偏移 20px（总计 40px） */}
-        <div id="teams" className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="teams" className="mt-10 scroll-mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teams.map((team) => (
             <TeamCard key={team.id} item={team} />
           ))}

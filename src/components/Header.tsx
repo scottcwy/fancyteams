@@ -244,7 +244,7 @@ export function Header() {
 
   return (
     <>
-      <MobileNavigation links={headerLinks} navigation={navData} />
+      <MobileNavigation links={headerLinks} navigation={navData.navigation} />
       <DesktopNavigation links={headerLinks} />
     </>
   );

@@ -12,7 +12,7 @@ export interface ChartData {
 }
 
 function getChart(data: ChartData, assetsPrefix?: string) {
-  // Specify the chart’s dimensions.
+  // Specify the chart's dimensions.
   const width = 1100;
   const height = width;
   const cx = width * 0.5; // adjust as needed to fit
@@ -20,7 +20,7 @@ function getChart(data: ChartData, assetsPrefix?: string) {
   const radius = Math.min(width, height) / 2 - 150;
   const iconSize = 10
 
-  // Create a radial cluster layout. The layout’s first dimension (x)
+  // Create a radial cluster layout. The layout's first dimension (x)
   // is the angle, while the second (y) is the radius.
   const tree = d3
     .cluster<ChartData>()
