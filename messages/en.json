@@ -219,7 +219,7 @@
     },
     "awesome-unity": {
       "title": "Awesome Unity",
-
+      "desc": "A systematic learning path for Unity game development",
       "getting_started": "Getting Started",
       "csharp": "C#",
       "shader_graph": "Shader Graph",

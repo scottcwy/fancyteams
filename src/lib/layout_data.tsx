@@ -49,7 +49,7 @@ export async function generateMetadata({
         { rel: "mask-icon", url: "/datadog.svg?v=3", color: "#000000" as any },
       ],
     },
-  } satisfies Metadata;
+  };
 }
 
 export const layoutViewport: Viewport = {
