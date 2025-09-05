@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": {
-      "template": "%s - Latent Box",
-      "default": "Latent Box"
+      "template": "%s - fancyteams",
+      "default": "fancyteams"
     },
     "description": "A collection of awesome-lists for AI, creativity and art by Latent Cat.",
     "keywords": {
@@ -219,7 +219,7 @@
     },
     "awesome-unity": {
       "title": "Awesome Unity",
-      "desc": "Systematic Unity game development learning path",
+
       "getting_started": "Getting Started",
       "csharp": "C#",
       "shader_graph": "Shader Graph",

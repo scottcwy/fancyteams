@@ -10,7 +10,7 @@ export function SectionHero() {
   const t = useTranslations("index.hero");
   return (
     <div
-      className="py-12 bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900">
+      className="py-12 bg-gradient-to-b from-zinc-50 to-zinc-100 dark:bg-zinc-500 dark:bg-none">
       <ContainerFull>
         <div className="flex flex-col items-center ">
           <HeaderPadding />

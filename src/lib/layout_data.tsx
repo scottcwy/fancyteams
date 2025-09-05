@@ -33,7 +33,23 @@ export async function generateMetadata({
       images:
         "/assets/resources/latentbox-hero.jpg",
     },
-  };
+    icons: {
+      icon: [
+        { url: "/datadog.svg?v=3", type: "image/svg+xml", sizes: "any" },
+        { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+        { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      ],
+      shortcut: [
+        { url: "/datadog.svg?v=3", type: "image/svg+xml" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180" },
+      ],
+      other: [
+        { rel: "mask-icon", url: "/datadog.svg?v=3", color: "#000000" as any },
+      ],
+    },
+  } satisfies Metadata;
 }
 
 export const layoutViewport: Viewport = {
@@ -50,12 +66,13 @@ export function LayoutHead() {
   return (
     <head>
       <link rel="manifest" href="/manifest.json" />
-      <link
-        rel="apple-touch-icon"
-        href="/apple-touch-icon?<generated>"
-        type="image/<generated>"
-        sizes="<generated>"
-      />
+      <link rel="icon" sizes="any" type="image/svg+xml" href="/datadog.svg?v=3" />
+      <link rel="shortcut icon" type="image/svg+xml" href="/datadog.svg?v=3" />
+      <link rel="mask-icon" href="/datadog.svg?v=3" color="#000000" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      {/* 移除 ico 回退，避免覆盖 SVG 显示 */}
       <meta content="yes" name="apple-mobile-web-app-capable" />
       <meta name="theme-color" content="#000000" />
       <script
